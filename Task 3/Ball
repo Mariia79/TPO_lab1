@@ -34,7 +34,8 @@ public class Ball {
         
 
         this.x = 0;
-        this.y = 0;        
+        this.y = 0;
+        
         
 
         
@@ -47,7 +48,10 @@ public class Ball {
         
     }
     
-   
+    public void die() {
+        this.Dead = true;
+             
+    }
     
     public void move() {
         x += dx;
@@ -65,10 +69,6 @@ public class Ball {
             y = this.canvas.getHeight() - YSIZE; dy = -dy;
         }
         
-      
+       
         this.canvas.repaint();
     }
-            
-            
-        
-}
