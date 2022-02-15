@@ -1,0 +1,22 @@
+package counterlab1;
+
+/**
+ *
+ * @author 1
+ */
+public class CounterLab1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Counter c = new Counter();
+        IncThread t1 = new IncThread(c);
+        DecThread t2 = new DecThread(c);
+        t1.start();
+        t2.start();
+        
+        // TODO code application logic here
+    }
+    
+}
