@@ -1,0 +1,38 @@
+package billiardballslab1;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author 1
+ */
+public class LowBallThread extends Thread { 
+     private LowBall lb;
+     private BallThread bt;
+    
+    public LowBallThread(LowBall ball, BallThread ballthread){
+        lb = ball;
+        bt = ballthread;
+    }
+    @Override 
+    public void run(){
+        try{
+            bt.join();
+            for (int i=1; i<1000; i++){
+                if (lb.Dead == true){
+                    return;
+                }
+                lb.move();
+                System.out.println("Thread name = " + Thread.currentThread().getName() + " Thread priority = " + Thread.currentThread().getPriority());
+                Thread.sleep(5);
+                
+            }
+        }catch(InterruptedException ex){
+            
+        }
+    }
+    
+}
