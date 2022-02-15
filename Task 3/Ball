@@ -47,10 +47,7 @@ public class Ball {
         
     }
     
-    public void die() {
-        this.Dead = true;
-             
-    }
+   
     
     public void move() {
         x += dx;
