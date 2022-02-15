@@ -1,0 +1,105 @@
+package billiardballslab1;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+
+
+
+/**
+ *
+ * @author 1
+ */
+public class BounceFrame extends JFrame {
+    private BallCanvas canvas;
+    
+    public static final int WIDTH = 450;
+    public static final int HEIGHT = 350;
+    public JTextField counterText;
+    
+    public BounceFrame() {
+        this.setSize(WIDTH, HEIGHT);
+        this.setTitle("Billiard Ball");
+        
+        this.canvas = new BallCanvas();
+        System.out.println("In Frame Thread name = " + Thread.currentThread().getName());
+        Container content = this.getContentPane();
+        content.add(this.canvas, BorderLayout.CENTER);
+        
+        
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(Color.lightGray);
+        
+        
+        
+        JButton buttonStart = new JButton("Start"); 
+        JButton buttonStop = new JButton ("Stop");
+        JButton buttonPocketSpawn = new JButton ("PocketSpawn");
+        counterText = new JTextField("0"); 
+        
+     
+           
+        
+       
+        
+        buttonStart.addActionListener(new ActionListener () {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Ball b = new Ball (canvas, counterText);
+                canvas.add(b);
+                BallThread thread = new BallThread(b);
+                thread.start();
+                System.out.println("Thread name = " + thread.getName());
+                
+                
+                
+            }
+        });
+        
+        buttonPocketSpawn.addActionListener(new ActionListener () {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Pocket pLU = new Pocket (canvas, counterText);
+                pLU.set_coord(0, 0);
+                canvas.add(pLU);
+                Pocket pLD = new Pocket (canvas, counterText);
+                pLD.set_coord(0, 250);
+                canvas.add(pLD);
+                Pocket pRU = new Pocket (canvas, counterText);
+                pRU.set_coord(350, 0);
+                canvas.add(pRU);
+                Pocket pRD = new Pocket (canvas, counterText);
+                pRD.set_coord(350, 250);
+                canvas.add(pRD);
+                
+            }
+            
+        });
+        
+        buttonStop.addActionListener(new ActionListener () {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        
+        buttonPanel.add(buttonStart);
+        buttonPanel.add(buttonStop);
+        buttonPanel.add(buttonPocketSpawn);
+        buttonPanel.add(counterText);
+        
+        
+        content.add(buttonPanel, BorderLayout.SOUTH);
+        
+            
+    }
+
+}
