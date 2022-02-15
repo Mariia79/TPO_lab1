@@ -42,8 +42,10 @@ public class BounceFrame extends JFrame {
         
         JButton buttonStart = new JButton("Start"); 
         JButton buttonStop = new JButton ("Stop");
+        JButton buttonLowBall = new JButton ("LowBall");
         JButton buttonBallsSpawn = new JButton ("BallsSpawn");
         counterText = new JTextField("0"); 
+        
         
         
         
@@ -79,6 +81,7 @@ public class BounceFrame extends JFrame {
                 Ball b = new Ball (canvas, counterText);
                 canvas.add(b);
                 BallThread thread = new BallThread(b);
+                thread.setPriority(9);
                 thread.start();
                 System.out.println("Thread name = " + thread.getName() + "Thread priority = " + thread.getPriority());
                 
@@ -87,6 +90,17 @@ public class BounceFrame extends JFrame {
             }
         });
         
+        buttonLowBall.addActionListener(new ActionListener () {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LowBall lb = new LowBall (canvas, counterText);
+                canvas.add(lb);
+                BallThread thread2 = new BallThread(lb);
+                thread2.setPriority(1);
+                thread2.start();
+                System.out.println("Thread name = " + thread2.getName() + "Thread priority = " + thread2.getPriority());
+            }
+        });
         
         
         
@@ -99,6 +113,7 @@ public class BounceFrame extends JFrame {
         
         buttonPanel.add(buttonStart);
         buttonPanel.add(buttonStop);
+        buttonPanel.add(buttonLowBall);
         buttonPanel.add(buttonBallsSpawn);
         buttonPanel.add(counterText);
         
