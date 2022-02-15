@@ -1,0 +1,23 @@
+ackage symbollab1;
+
+/**
+ *
+ * @author 1
+ */
+public class SymbolLab1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Printer p = new Printer ();
+        HorizontalThread threadH = new HorizontalThread(p);
+        VerticalThread threadV = new VerticalThread(p);
+        threadV.start();
+        threadH.start(); 
+        
+        
+        // TODO code application logic here
+    }
+    
+}
