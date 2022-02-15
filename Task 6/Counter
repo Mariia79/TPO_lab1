@@ -1,0 +1,67 @@
+package counterlab1;
+
+/**
+ *
+ * @author 1
+ */
+public class Counter {
+    public int value;
+    
+    public Counter(){
+        
+    }
+    
+    // завдання 6 (2.1)
+//    public synchronized void increment(){
+//        value++;
+//    }
+//    
+//    public synchronized void decrement(){
+//        value--;
+//    
+//}
+    
+    
+    // завдання 6 (1) + завдання 6 (2.2)
+//    public void increment(){
+//        value++;
+//        System.out.println("Value: " + value);
+//    }
+    
+//     завдання 6(1) + завдання 6 (2.2)
+    
+//    public void decrement(){
+//        value--;
+//        System.out.println("Value: " + value);
+//    }
+    
+    public synchronized void increment(){
+        notify();
+       
+        
+        try{
+            value++;
+            wait();
+        }catch(InterruptedException ex){
+            
+        }
+       
+    }
+//    
+    public synchronized void decrement(){
+        notify();
+        
+        try{
+            value--;
+            wait();
+        }catch(InterruptedException ex){
+            
+        }
+       
+    }
+    
+    public void printValue(){
+        System.out.println("Value: " + value);
+    }
+    
+}
