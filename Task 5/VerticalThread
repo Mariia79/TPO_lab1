@@ -1,0 +1,39 @@
+package symbollab1;
+
+/**
+ *
+ * @author 1
+ */
+public class VerticalThread extends Thread{
+     private Printer p;
+     
+     public VerticalThread(Printer printer){
+         p = printer;
+        
+    }
+    @Override 
+    public void run(){
+        // завдання 5(1)
+//        try{
+//            for (int j=1; j<=100; j++){  
+//            for (int i=1; i<92; i++){
+//                
+//                System.out.print("|");
+//                Thread.sleep(5);
+//                
+//                
+//                
+//            }
+//            }
+//        }catch(InterruptedException ex){
+//            
+//        }
+          for (int j=1; j<=100; j++){
+              for (int i=1; i<92; i++) {
+                  p.printV();
+              }
+          }
+          
+    }
+    
+}
