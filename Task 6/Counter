@@ -25,14 +25,14 @@ public class Counter {
     // завдання 6 (1) + завдання 6 (2.2)
 //    public void increment(){
 //        value++;
-//        System.out.println("Value: " + value);
+//        
 //    }
     
 //     завдання 6(1) + завдання 6 (2.2)
     
 //    public void decrement(){
 //        value--;
-//        System.out.println("Value: " + value);
+//        
 //    }
     
     public synchronized void increment(){
